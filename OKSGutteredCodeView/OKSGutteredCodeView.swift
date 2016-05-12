@@ -20,7 +20,6 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
     func xibSetUp() {
         view = loadFromXib()
         view.frame = bounds
-        
         view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         addSubview(view)
     }
@@ -62,6 +61,9 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
     //MARK UITextView Delegate Methods
     
     func textViewDidChange(textView: UITextView) {
+        for label in self.gutterSubViews {
+            label.removeFromSuperview()
+        }
         self.numberOfLines = self.countNumberOfLines()
         self.addNumberToGutter()
     }
@@ -83,16 +85,10 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
             let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 30, self.textView.font!.lineHeight))
             label.text = "\(counter)"
             self.gutterView.addSubview(label)
+            self.gutterSubViews.append(label)
             counter += 1
             numberInsertionPoint = numberInsertionPoint + heightOfLine(line)
         }
-        
-        
-        //fix later
-        let label: UILabel = UILabel(frame: CGRectMake(0, 0, 30, self.textView.font!.lineHeight))
-        label.text = "1"
-        self.gutterView.addSubview(label)
-        // end test area
     }
     
     func heightOfLine(line: String) -> CGFloat {

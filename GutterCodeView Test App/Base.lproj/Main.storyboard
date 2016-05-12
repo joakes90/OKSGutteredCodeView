@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7c-6N-hPQ" customClass="OKSGutteredCodeView" customModule="OKSGutteredCodeView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="F7c-6N-hPQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="19Z-FM-rrd"/>
+                            <constraint firstItem="F7c-6N-hPQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="28" id="19Z-FM-rrd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F7c-6N-hPQ" secondAttribute="bottom" id="gji-FU-CoR"/>
                             <constraint firstItem="F7c-6N-hPQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="iwy-jU-mg4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F7c-6N-hPQ" secondAttribute="trailing" constant="-20" id="nKs-4u-yec"/>

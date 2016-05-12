@@ -8,11 +8,14 @@
 
 import UIKit
 
-class OKSGutteredCodeView: UIView {
+class OKSGutteredCodeView: UIView, UITextViewDelegate {
 
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     var view: UIView!
+    var font: UIFont?
+    private var numberOfLines = 1
+    private var gutterSubViews: [UILabel] = []
     
     func xibSetUp() {
         view = loadFromXib()
@@ -56,4 +59,46 @@ class OKSGutteredCodeView: UIView {
         self.textView.font = font
     }
     
+    //MARK UITextView Delegate Methods
+    
+    func textViewDidChange(textView: UITextView) {
+        self.numberOfLines = self.countNumberOfLines()
+        self.addNumberToGutter()
+    }
+    
+    //MARK sorting out number and location of lines
+    
+    func countNumberOfLines() -> Int {
+        let text = self.textView.text
+        let seperatedLines = text.componentsSeparatedByString("\n")
+        return seperatedLines.count - 1
+    }
+    
+    func addNumberToGutter() {
+        let text = self.textView.text
+        let seperatedLines = text.componentsSeparatedByString("\n")
+        var numberInsertionPoint: CGFloat = 0
+        var counter: Int = 1
+        for line in seperatedLines {
+            let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 30, self.textView.font!.lineHeight))
+            label.text = "\(counter)"
+            self.gutterView.addSubview(label)
+            counter += 1
+            numberInsertionPoint = numberInsertionPoint + heightOfLine(line)
+        }
+        
+        
+        //fix later
+        let label: UILabel = UILabel(frame: CGRectMake(0, 0, 30, self.textView.font!.lineHeight))
+        label.text = "1"
+        self.gutterView.addSubview(label)
+        // end test area
+    }
+    
+    func heightOfLine(line: String) -> CGFloat {
+        let font: UIFont = self.textView.font!
+        let textViewWidth: CGFloat = self.textView.bounds.width
+        let lineHeight = line.boundingRectWithSize(CGSizeMake(textViewWidth, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).height
+        return lineHeight
+    }
 }

@@ -8,12 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		0AEC58041CE4F0E7001EF74E /* OKSGutteredCodeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AEC58031CE4F0E7001EF74E /* OKSGutteredCodeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0AEC580E1CE4F54A001EF74E /* OKSGutteredCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC580D1CE4F54A001EF74E /* OKSGutteredCodeView.swift */; };
+		0AEC58101CE4F568001EF74E /* OKSGutteredCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */; };
+		0AEC58181CE4F73F001EF74E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC58171CE4F73F001EF74E /* AppDelegate.swift */; };
+		0AEC581A1CE4F73F001EF74E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC58191CE4F73F001EF74E /* ViewController.swift */; };
+		0AEC581D1CE4F73F001EF74E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581B1CE4F73F001EF74E /* Main.storyboard */; };
+		0AEC581F1CE4F73F001EF74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581E1CE4F73F001EF74E /* Assets.xcassets */; };
+		0AEC58221CE4F73F001EF74E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */; };
+		0AEC58271CE4FB19001EF74E /* OKSGutteredCodeView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OKSGutteredCodeView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEC58031CE4F0E7001EF74E /* OKSGutteredCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKSGutteredCodeView.h; sourceTree = "<group>"; };
 		0AEC58051CE4F0E7001EF74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AEC580D1CE4F54A001EF74E /* OKSGutteredCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OKSGutteredCodeView.swift; sourceTree = "<group>"; };
+		0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OKSGutteredCodeView.xib; sourceTree = "<group>"; };
+		0AEC58151CE4F73F001EF74E /* GutterCodeView Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GutterCodeView Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AEC58171CE4F73F001EF74E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0AEC58191CE4F73F001EF74E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0AEC581C1CE4F73F001EF74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0AEC581E1CE4F73F001EF74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0AEC58211CE4F73F001EF74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0AEC58231CE4F73F001EF74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +41,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0AEC58121CE4F73F001EF74E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AEC58271CE4FB19001EF74E /* OKSGutteredCodeView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -31,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEC58021CE4F0E7001EF74E /* OKSGutteredCodeView */,
+				0AEC58161CE4F73F001EF74E /* GutterCodeView Test App */,
 				0AEC58011CE4F0E7001EF74E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */,
+				0AEC58151CE4F73F001EF74E /* GutterCodeView Test App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,8 +75,23 @@
 			children = (
 				0AEC58031CE4F0E7001EF74E /* OKSGutteredCodeView.h */,
 				0AEC58051CE4F0E7001EF74E /* Info.plist */,
+				0AEC580D1CE4F54A001EF74E /* OKSGutteredCodeView.swift */,
+				0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */,
 			);
 			path = OKSGutteredCodeView;
+			sourceTree = "<group>";
+		};
+		0AEC58161CE4F73F001EF74E /* GutterCodeView Test App */ = {
+			isa = PBXGroup;
+			children = (
+				0AEC58171CE4F73F001EF74E /* AppDelegate.swift */,
+				0AEC58191CE4F73F001EF74E /* ViewController.swift */,
+				0AEC581B1CE4F73F001EF74E /* Main.storyboard */,
+				0AEC581E1CE4F73F001EF74E /* Assets.xcassets */,
+				0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */,
+				0AEC58231CE4F73F001EF74E /* Info.plist */,
+			);
+			path = "GutterCodeView Test App";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,16 +126,37 @@
 			productReference = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		0AEC58141CE4F73F001EF74E /* GutterCodeView Test App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0AEC58241CE4F73F001EF74E /* Build configuration list for PBXNativeTarget "GutterCodeView Test App" */;
+			buildPhases = (
+				0AEC58111CE4F73F001EF74E /* Sources */,
+				0AEC58121CE4F73F001EF74E /* Frameworks */,
+				0AEC58131CE4F73F001EF74E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GutterCodeView Test App";
+			productName = "GutterCodeView Test App";
+			productReference = 0AEC58151CE4F73F001EF74E /* GutterCodeView Test App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0AEC57F71CE4F0E7001EF74E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "J.B. Hunt";
 				TargetAttributes = {
 					0AEC57FF1CE4F0E7001EF74E = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					0AEC58141CE4F73F001EF74E = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
@@ -104,6 +167,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 0AEC57F61CE4F0E7001EF74E;
 			productRefGroup = 0AEC58011CE4F0E7001EF74E /* Products */;
@@ -111,6 +175,7 @@
 			projectRoot = "";
 			targets = (
 				0AEC57FF1CE4F0E7001EF74E /* OKSGutteredCodeView */,
+				0AEC58141CE4F73F001EF74E /* GutterCodeView Test App */,
 			);
 		};
 /* End PBXProject section */
@@ -120,6 +185,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEC58101CE4F568001EF74E /* OKSGutteredCodeView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AEC58131CE4F73F001EF74E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AEC58221CE4F73F001EF74E /* LaunchScreen.storyboard in Resources */,
+				0AEC581F1CE4F73F001EF74E /* Assets.xcassets in Resources */,
+				0AEC581D1CE4F73F001EF74E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,10 +206,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEC580E1CE4F54A001EF74E /* OKSGutteredCodeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AEC58111CE4F73F001EF74E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AEC581A1CE4F73F001EF74E /* ViewController.swift in Sources */,
+				0AEC58181CE4F73F001EF74E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0AEC581B1CE4F73F001EF74E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AEC581C1CE4F73F001EF74E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AEC58211CE4F73F001EF74E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0AEC58061CE4F0E7001EF74E /* Debug */ = {
@@ -230,6 +335,25 @@
 		0AEC58091CE4F0E7001EF74E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OKSGutteredCodeView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jbhunt.OKSGutteredCodeView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0AEC580A1CE4F0E7001EF74E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -241,21 +365,27 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		0AEC580A1CE4F0E7001EF74E /* Release */ = {
+		0AEC58251CE4F73F001EF74E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = OKSGutteredCodeView/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jbhunt.OKSGutteredCodeView;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "GutterCodeView Test App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0AEC58261CE4F73F001EF74E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "GutterCodeView Test App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -276,6 +406,14 @@
 			buildConfigurations = (
 				0AEC58091CE4F0E7001EF74E /* Debug */,
 				0AEC580A1CE4F0E7001EF74E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0AEC58241CE4F73F001EF74E /* Build configuration list for PBXNativeTarget "GutterCodeView Test App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AEC58251CE4F73F001EF74E /* Debug */,
+				0AEC58261CE4F73F001EF74E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

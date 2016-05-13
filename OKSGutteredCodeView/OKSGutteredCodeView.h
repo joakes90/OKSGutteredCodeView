@@ -3,7 +3,7 @@
 //  OKSGutteredCodeView
 //
 //  Created by Justin Oakes on 5/12/16.
-//  Copyright © 2016 J.B. Hunt. All rights reserved.
+//  Copyright © 2016 Oklasoft LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

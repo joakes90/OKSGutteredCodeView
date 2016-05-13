@@ -37,6 +37,8 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         
         super.init(frame: frame)
         xibSetUp()
+        self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
+        self.textViewDidChange(self.textView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,6 +46,8 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         
         super.init(coder: aDecoder)
         xibSetUp()
+        self.textViewDidChange(self.textView)
+        self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
     }
     
     func setGutterBackgroundColor(color: UIColor) {
@@ -83,6 +87,8 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         var counter: Int = 1
         for line in seperatedLines {
             let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 30, self.textView.font!.lineHeight))
+            label.font = self.font != nil ? self.font : UIFont(name: "Courier New", size: 17.0)
+            label.textAlignment = .Right
             label.text = "\(counter)"
             self.gutterView.addSubview(label)
             self.gutterSubViews.append(label)
@@ -96,5 +102,13 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         let textViewWidth: CGFloat = self.textView.bounds.width
         let lineHeight = line.boundingRectWithSize(CGSizeMake(textViewWidth, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).height
         return lineHeight
+    }
+    
+    //MARK KVO methods
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath != nil && keyPath == "bounds" && (object?.isEqual(self))! {
+            performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.5)
+        }
     }
 }

@@ -94,6 +94,11 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
             self.gutterSubViews.append(label)
             counter += 1
             numberInsertionPoint = numberInsertionPoint + heightOfLine(line)
+            if numberInsertionPoint > self.gutterView.contentSize.height {
+                let contentHeight = self.gutterView.contentSize.height
+                let contentWidth = self.gutterView.contentSize.width
+                self.gutterView.contentSize = CGSize(width: contentWidth, height: contentHeight + heightOfLine(line))
+            }
         }
     }
     

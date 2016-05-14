@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OKSGutteredCodeView: UIView, UITextViewDelegate {
+class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
@@ -72,6 +72,12 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         self.addNumberToGutter()
     }
     
+    //MARK UIScrollView Delegate Mathods
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let yOffSet = self.textView.contentOffset.y
+        self.gutterView.scrollRectToVisible(CGRectMake(0, yOffSet, self.gutterView.frame.width, self.gutterView.frame.height), animated: false)
+    }
     //MARK sorting out number and location of lines
     
     func countNumberOfLines() -> Int {
@@ -84,6 +90,7 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate {
         let text = self.textView.text
         let seperatedLines = text.componentsSeparatedByString("\n")
         var numberInsertionPoint: CGFloat = 0
+        self.gutterView.contentSize = self.gutterView.frame.size
         var counter: Int = 1
         for line in seperatedLines {
             let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 30, self.textView.font!.lineHeight))

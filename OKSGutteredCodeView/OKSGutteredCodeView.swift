@@ -16,7 +16,8 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
     var font: UIFont?
     private var numberOfLines = 1
     private var gutterSubViews: [UILabel] = []
-    
+    private var visableKeyboard = false
+    private var keyboardDementions: CGRect?
     func xibSetUp() {
         view = loadFromXib()
         view.frame = bounds
@@ -33,22 +34,24 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
     }
     
     override init(frame: CGRect) {
-        //setup properties later
         
         super.init(frame: frame)
         xibSetUp()
         self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
         self.textViewDidChange(self.textView)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        //set up properties later
         
         super.init(coder: aDecoder)
         xibSetUp()
-        self.textViewDidChange(self.textView)
         self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        self.textViewDidChange(self.textView)
     }
+    
+    //MARK: custimization methods
     
     func setGutterBackgroundColor(color: UIColor) {
         self.gutterView.backgroundColor = color
@@ -62,7 +65,7 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         self.textView.font = font
     }
     
-    //MARK UITextView Delegate Methods
+    //MARK: UITextView Delegate Methods
     
     func textViewDidChange(textView: UITextView) {
         for label in self.gutterSubViews {
@@ -70,15 +73,48 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         }
         self.numberOfLines = self.countNumberOfLines()
         self.addNumberToGutter()
+        if self.visableKeyboard {
+            
+            let userInfo: [NSObject : AnyObject] = [UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: self.keyboardDementions!)]
+            let notification: NSNotification = NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo: userInfo)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+           
+        }
     }
     
-    //MARK UIScrollView Delegate Mathods
+    func keyboardWillShow(notification: NSNotification) {
+        // figures out the frame of the keyboard when it appears
+        self.visableKeyboard = true
+        
+        let info  = notification.userInfo!
+        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
+        
+        let rawFrame = value.CGRectValue
+        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+        self.keyboardDementions = keyboardFrame
+        // adds content size if needed
+        
+        if self.heightOfLine(self.textView.text) > self.textView.bounds.height - keyboardFrame.height {
+            self.textView.contentSize = CGSizeMake(self.textView.bounds.width, self.textView.contentSize.height + keyboardFrame.height)
+            self.gutterView.contentSize = CGSizeMake(self.gutterView.bounds.width, self.gutterView.contentSize.height + keyboardFrame.height)
+        } else {
+            print("No")
+        }
+        print("content size: \(self.textView.contentSize)")
+        print("keyboardFrame: \(keyboardFrame)")
+        
+    }
+    func keyboardWillHide() {
+       //TODO the oposite of the keyboardwWillShow method
+    }
+    
+    //MARK: UIScrollView Delegate Mathods
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffSet = self.textView.contentOffset.y
         self.gutterView.scrollRectToVisible(CGRectMake(0, yOffSet, self.gutterView.frame.width, self.gutterView.frame.height), animated: false)
     }
-    //MARK sorting out number and location of lines
+    //MARK: sorting out number and location of lines
     
     func countNumberOfLines() -> Int {
         let text = self.textView.text
@@ -116,7 +152,7 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         return lineHeight
     }
     
-    //MARK KVO methods
+    //MARK: KVO methods
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath != nil && keyPath == "bounds" && (object?.isEqual(self))! {

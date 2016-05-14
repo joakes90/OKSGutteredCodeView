@@ -156,6 +156,10 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath != nil && keyPath == "bounds" && (object?.isEqual(self))! {
+            if self.visableKeyboard {
+                self.textView.contentSize = CGSizeMake(0, 0)
+                self.gutterView.contentSize = CGSizeMake(0, 0)
+            }
             performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.5)
         }
     }

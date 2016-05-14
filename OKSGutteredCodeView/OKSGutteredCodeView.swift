@@ -93,7 +93,7 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         self.gutterView.contentSize = self.gutterView.frame.size
         var counter: Int = 1
         for line in seperatedLines {
-            let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 30, self.textView.font!.lineHeight))
+            let label: UILabel = UILabel(frame: CGRectMake(0, numberInsertionPoint, 35, self.textView.font!.lineHeight))
             label.font = self.font != nil ? self.font : UIFont(name: "Courier New", size: 17.0)
             label.textAlignment = .Right
             label.text = "\(counter)"

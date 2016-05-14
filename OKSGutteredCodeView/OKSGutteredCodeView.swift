@@ -152,6 +152,11 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         return lineHeight
     }
     
+    func updatekeyboardSize() {
+        self.textView.resignFirstResponder()
+        self.textView.becomeFirstResponder()
+    }
+    
     //MARK: KVO methods
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -160,7 +165,8 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
                 self.textView.contentSize = CGSizeMake(0, 0)
                 self.gutterView.contentSize = CGSizeMake(0, 0)
             }
-            performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.5)
+            performSelector(#selector(updatekeyboardSize), withObject: self.textView, afterDelay: 0.5)
+            performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.51)
         }
     }
 }

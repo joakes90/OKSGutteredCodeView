@@ -64,6 +64,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.font = font
     }
     
+    public func setText(text: String) {
+        self.textView.text = text
+    }
+    
     //MARK: UITextView Delegate Methods
     
     @objc public func textViewDidChange(textView: UITextView) {
@@ -114,7 +118,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     
     //MARK: UIScrollView Delegate Mathods
     
-    private func scrollViewDidScroll(scrollView: UIScrollView) {
+    @objc public func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffSet = self.textView.contentOffset.y
         self.gutterView.scrollRectToVisible(CGRectMake(0, yOffSet, self.gutterView.frame.width, self.gutterView.frame.height), animated: false)
     }
@@ -129,7 +133,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     func addNumberToGutter() {
         let text = self.textView.text
         let seperatedLines = text.componentsSeparatedByString("\n")
-        var numberInsertionPoint: CGFloat = 0
+        var numberInsertionPoint: CGFloat = 8
         self.gutterView.contentSize = self.gutterView.frame.size
         var counter: Int = 1
         for line in seperatedLines {

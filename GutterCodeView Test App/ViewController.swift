@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        self.gutterView.setGutterBackgroundColor(UIColor.blueColor())
         self.gutterView.setfont(UIFont(name: "Hack", size: 17.0)!)
+        self.gutterView.setText("Hello \n \n \n World")
     }
 
     override func didReceiveMemoryWarning() {

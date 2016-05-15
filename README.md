@@ -6,7 +6,7 @@ This view can be easily initialized like any other view or used in a storyboard 
 This view provides several convenance methods for customizing the look of the view and a test app to see them in use
 
     // set the background color of the line number gutter
-    setGutterBackgroundColor(color: UIColor)
+    func setGutterBackgroundColor(color: UIColor)
     
     //set the font for the text used in both the gutter and the textview
     func setfont(font: UIFont) 

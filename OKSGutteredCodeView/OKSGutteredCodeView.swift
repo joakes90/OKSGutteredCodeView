@@ -55,16 +55,16 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     
     //MARK: custimization methods
     
-    public func setGutterBackgroundColor(color: UIColor) {
+    @objc public func setGutterBackgroundColor(color: UIColor) {
         self.gutterView.backgroundColor = color
     }
     
-    public func setfont(font: UIFont) {
+    @objc public func setfont(font: UIFont) {
         self.font = font
         self.textView.font = font
     }
     
-    public func setText(text: String) {
+    @objc public func setText(text: String) {
         self.textView.text = text
     }
     
@@ -83,6 +83,11 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
             NSNotificationCenter.defaultCenter().postNotification(notification)
            
         }
+        if textView.text.characters.last == "\n" {
+            let curserPosition = self.textView.caretRectForPosition(self.textView.selectedTextRange!.start).origin
+            let newViewRect = CGRectMake(0, curserPosition.y, self.textView.bounds.width, self.textView.bounds.height)
+            self.textView.scrollRectToVisible(newViewRect, animated: false)
+        }
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -100,12 +105,11 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         if self.heightOfLine(self.textView.text) > self.textView.bounds.height - keyboardFrame.height {
             self.textView.contentSize = CGSizeMake(self.textView.bounds.width, self.textView.contentSize.height + keyboardFrame.height)
             self.gutterView.contentSize = CGSizeMake(self.gutterView.bounds.width, self.gutterView.contentSize.height + keyboardFrame.height)
-        } else {
-            print("No")
         }
-        print("content size: \(self.textView.contentSize)")
-        print("keyboardFrame: \(keyboardFrame)")
-        
+    }
+    
+    func keepCurserVisable() {
+    
     }
     func keyboardWillHide() {
         if self.visableKeyboard {
@@ -131,6 +135,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     }
     
     func addNumberToGutter() {
+        let curserPosition = self.textView.caretRectForPosition(self.textView.selectedTextRange!.start).origin
         let text = self.textView.text
         let seperatedLines = text.componentsSeparatedByString("\n")
         var numberInsertionPoint: CGFloat = 8
@@ -151,6 +156,8 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
                 self.gutterView.contentSize = CGSize(width: contentWidth, height: contentHeight + heightOfLine(line))
             }
         }
+        self.textView.scrollRectToVisible(CGRectMake(0, curserPosition.y, self.textView.bounds.width, self.textView.bounds.height), animated: false)
+        self.gutterView.scrollRectToVisible(CGRectMake(0, curserPosition.y, self.textView.bounds.width, self.textView.bounds.height), animated: false)
     }
     
     func heightOfLine(line: String) -> CGFloat {

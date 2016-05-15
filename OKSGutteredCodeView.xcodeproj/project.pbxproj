@@ -18,6 +18,7 @@
 		D06B4DED1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; };
 		D06B4DEE1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D06B4DF31CE7F384008B5804 /* Hack-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */; };
+		D0BE2BAE1CE8FF6B0043EA79 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D0BE2BAD1CE8FF6B0043EA79 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		0AEC58211CE4F73F001EF74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AEC58231CE4F73F001EF74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hack-Regular.ttf"; sourceTree = "<group>"; };
+		D0BE2BAD1CE8FF6B0043EA79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				0AEC58021CE4F0E7001EF74E /* OKSGutteredCodeView */,
 				0AEC58161CE4F73F001EF74E /* GutterCodeView Test App */,
 				0AEC58011CE4F0E7001EF74E /* Products */,
+				D0BE2BAD1CE8FF6B0043EA79 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0BE2BAE1CE8FF6B0043EA79 /* README.md in Sources */,
 				0AEC580E1CE4F54A001EF74E /* OKSGutteredCodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

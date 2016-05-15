@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   # 1
   s.platform = :ios
   s.ios.deployment_target = '9.3'
-  s.name = "OKSGutteredTextView"
-  s.summary = "A UIView sublass with a text view and a gutter for line numbers"
+  s.name = "OKSGutteredCodeView"
+  s.summary = "A UIView subclass that contains a textview and a gutter for line numbers"
   s.requires_arc = true
  
   # 2
@@ -38,8 +38,8 @@ Pod::Spec.new do |s|
   s.framework = "UIKit"
  
   # 8
-  s.source_files = "OKSGutteredCodeView/**/*.{swift}"
+  s.source_files = "RWPickFlavor/**/*.{swift}"
  
   # 9
-  s.resources = "OKSGutteredCodeView/**/*.{png,jpeg,jpg,storyboard,xib}"
+  s.resources = "RWPickFlavor/**/*.{png,jpeg,jpg,storyboard,xib}"
 end

@@ -31,6 +31,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="F7c-6N-hPQ" secondAttribute="trailing" constant="-20" id="nKs-4u-yec"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gutterView" destination="F7c-6N-hPQ" id="na8-aG-IhW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

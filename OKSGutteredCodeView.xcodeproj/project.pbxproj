@@ -15,8 +15,34 @@
 		0AEC581D1CE4F73F001EF74E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581B1CE4F73F001EF74E /* Main.storyboard */; };
 		0AEC581F1CE4F73F001EF74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581E1CE4F73F001EF74E /* Assets.xcassets */; };
 		0AEC58221CE4F73F001EF74E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */; };
-		0AEC58271CE4FB19001EF74E /* OKSGutteredCodeView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; };
+		D06B4DED1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; };
+		D06B4DEE1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D06B4DF31CE7F384008B5804 /* Hack-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D06B4DEF1CE7F04A008B5804 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AEC57F71CE4F0E7001EF74E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AEC57FF1CE4F0E7001EF74E;
+			remoteInfo = OKSGutteredCodeView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D06B4DF11CE7F04A008B5804 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D06B4DEE1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OKSGutteredCodeView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +57,7 @@
 		0AEC581E1CE4F73F001EF74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEC58211CE4F73F001EF74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AEC58231CE4F73F001EF74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hack-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AEC58271CE4FB19001EF74E /* OKSGutteredCodeView.framework in Frameworks */,
+				D06B4DED1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +117,7 @@
 				0AEC581E1CE4F73F001EF74E /* Assets.xcassets */,
 				0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */,
 				0AEC58231CE4F73F001EF74E /* Info.plist */,
+				D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */,
 			);
 			path = "GutterCodeView Test App";
 			sourceTree = "<group>";
@@ -133,10 +161,12 @@
 				0AEC58111CE4F73F001EF74E /* Sources */,
 				0AEC58121CE4F73F001EF74E /* Frameworks */,
 				0AEC58131CE4F73F001EF74E /* Resources */,
+				D06B4DF11CE7F04A008B5804 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D06B4DF01CE7F04A008B5804 /* PBXTargetDependency */,
 			);
 			name = "GutterCodeView Test App";
 			productName = "GutterCodeView Test App";
@@ -193,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D06B4DF31CE7F384008B5804 /* Hack-Regular.ttf in Resources */,
 				0AEC58221CE4F73F001EF74E /* LaunchScreen.storyboard in Resources */,
 				0AEC581F1CE4F73F001EF74E /* Assets.xcassets in Resources */,
 				0AEC581D1CE4F73F001EF74E /* Main.storyboard in Resources */,
@@ -220,6 +251,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D06B4DF01CE7F04A008B5804 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AEC57FF1CE4F0E7001EF74E /* OKSGutteredCodeView */;
+			targetProxy = D06B4DEF1CE7F04A008B5804 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0AEC581B1CE4F73F001EF74E /* Main.storyboard */ = {
@@ -371,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "GutterCodeView Test App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
@@ -382,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "GutterCodeView Test App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
@@ -408,6 +449,7 @@
 				0AEC580A1CE4F0E7001EF74E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0AEC58241CE4F73F001EF74E /* Build configuration list for PBXNativeTarget "GutterCodeView Test App" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +458,7 @@
 				0AEC58261CE4F73F001EF74E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

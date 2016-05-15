@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import OKSGutteredCodeView
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var gutterView: OKSGutteredCodeView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       self.gutterView.setGutterBackgroundColor(UIColor.blueColor())
+        self.gutterView.setfont(UIFont(name: "Hack", size: 17.0)!)
     }
 
     override func didReceiveMemoryWarning() {

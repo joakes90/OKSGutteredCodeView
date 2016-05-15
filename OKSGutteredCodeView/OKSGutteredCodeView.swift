@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
+public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
@@ -33,41 +33,40 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         return view
     }
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         
         super.init(frame: frame)
         xibSetUp()
         self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
         self.textViewDidChange(self.textView)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         xibSetUp()
         self.addObserver(self, forKeyPath: "bounds", options: .Initial, context: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
         self.textViewDidChange(self.textView)
     }
     
     //MARK: custimization methods
     
-    func setGutterBackgroundColor(color: UIColor) {
+    public func setGutterBackgroundColor(color: UIColor) {
         self.gutterView.backgroundColor = color
     }
     
-    func setGutterFont(font: UIFont) {
-        //implement this later
-    }
-    
-    func setTextViewFont(font: UIFont) {
+    public func setfont(font: UIFont) {
+        self.font = font
         self.textView.font = font
     }
     
     //MARK: UITextView Delegate Methods
     
-    func textViewDidChange(textView: UITextView) {
+    @objc public func textViewDidChange(textView: UITextView) {
         for label in self.gutterSubViews {
             label.removeFromSuperview()
         }
@@ -105,12 +104,17 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
         
     }
     func keyboardWillHide() {
-       //TODO the oposite of the keyboardwWillShow method
+        if self.visableKeyboard {
+            self.visableKeyboard = false
+            self.textView.contentSize = CGSizeMake(self.textView.bounds.width, self.textView.contentSize.height - self.keyboardDementions!.height)
+            self.gutterView.contentSize = CGSizeMake(self.gutterView.bounds.width, self.gutterView.contentSize.height - self.keyboardDementions!.height)
+            self.keyboardDementions = nil
+        }
     }
     
     //MARK: UIScrollView Delegate Mathods
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    private func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffSet = self.textView.contentOffset.y
         self.gutterView.scrollRectToVisible(CGRectMake(0, yOffSet, self.gutterView.frame.width, self.gutterView.frame.height), animated: false)
     }
@@ -159,7 +163,7 @@ class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate {
     
     //MARK: KVO methods
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath != nil && keyPath == "bounds" && (object?.isEqual(self))! {
             if self.visableKeyboard {
                 self.textView.contentSize = CGSizeMake(0, 0)

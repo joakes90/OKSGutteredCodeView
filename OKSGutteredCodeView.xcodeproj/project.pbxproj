@@ -386,7 +386,7 @@
 				INFOPLIST_FILE = OKSGutteredCodeView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jbhunt.OKSGutteredCodeView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oklasoft.OKSGutteredCodeView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -404,7 +404,7 @@
 				INFOPLIST_FILE = OKSGutteredCodeView/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jbhunt.OKSGutteredCodeView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oklasoft.OKSGutteredCodeView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

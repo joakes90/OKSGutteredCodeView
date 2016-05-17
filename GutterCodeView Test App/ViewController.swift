@@ -18,6 +18,13 @@ class ViewController: UIViewController {
        self.gutterView.setGutterBackgroundColor(UIColor.blueColor())
         self.gutterView.setfont(UIFont(name: "Hack", size: 17.0)!)
         self.gutterView.setText("Hello \n \n \n World")
+
+        let testToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 100, 70))
+        let flexSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let testButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Bookmarks, target: nil, action: nil)
+       testToolbar.items = [flexSpace, testButton]
+        
+        self.gutterView.addTextViewAccessoryView(testToolbar)
     }
 
     override func didReceiveMemoryWarning() {

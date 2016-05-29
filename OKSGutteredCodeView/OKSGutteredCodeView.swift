@@ -75,6 +75,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.inputAccessoryView = toolbar
     }
     
+    @objc public func insertTextAtCurser(text: String) {
+        self.textView.replaceRange(self.textView.selectedTextRange!, withText: text)
+    }
+    
     //MARK: UITextView Delegate Methods
     
     @objc public func textViewDidChange(textView: UITextView) {

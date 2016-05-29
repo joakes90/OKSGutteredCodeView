@@ -26,6 +26,8 @@ class ViewController: UIViewController, CodeViewDelegate {
        testToolbar.items = [flexSpace, testButton]
         
         self.gutterView.addTextViewAccessoryView(testToolbar)
+        
+        performSelector(#selector(test), withObject: nil, afterDelay: 5.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +38,8 @@ class ViewController: UIViewController, CodeViewDelegate {
     func textUpdated(text: String) {
         print(text)
     }
-
+    
+    func test() {
+        self.gutterView.insertTextAtCurser("Wubalubadubdub")
+    }
 }
-

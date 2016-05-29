@@ -12,8 +12,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
 
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
+    public weak var delegate: CodeViewDelegate?
     var view: UIView!
     var font: UIFont?
+    
     private var numberOfLines = 1
     private var gutterSubViews: [UILabel] = []
     private var visableKeyboard = false
@@ -93,6 +95,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
             let newViewRect = CGRectMake(0, curserPosition.y, self.textView.bounds.width, self.textView.bounds.height)
             self.textView.scrollRectToVisible(newViewRect, animated: false)
         }
+        self.delegate?.textUpdated(self.textView.text)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -189,4 +192,5 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
             performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.51)
         }
     }
+    
 }

@@ -15,6 +15,7 @@
 		0AEC581D1CE4F73F001EF74E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581B1CE4F73F001EF74E /* Main.storyboard */; };
 		0AEC581F1CE4F73F001EF74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC581E1CE4F73F001EF74E /* Assets.xcassets */; };
 		0AEC58221CE4F73F001EF74E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC58201CE4F73F001EF74E /* LaunchScreen.storyboard */; };
+		D0656BD71CFA6E2E00734FF7 /* CodeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0656BD61CFA6E2E00734FF7 /* CodeViewDelegate.swift */; };
 		D06B4DED1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; };
 		D06B4DEE1CE7F04A008B5804 /* OKSGutteredCodeView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC58001CE4F0E7001EF74E /* OKSGutteredCodeView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D06B4DF31CE7F384008B5804 /* Hack-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */; };
@@ -58,6 +59,7 @@
 		0AEC581E1CE4F73F001EF74E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEC58211CE4F73F001EF74E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AEC58231CE4F73F001EF74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0656BD61CFA6E2E00734FF7 /* CodeViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewDelegate.swift; sourceTree = "<group>"; };
 		D06B4DF21CE7F2CC008B5804 /* Hack-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hack-Regular.ttf"; sourceTree = "<group>"; };
 		D0BE2BAD1CE8FF6B0043EA79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				0AEC58051CE4F0E7001EF74E /* Info.plist */,
 				0AEC580D1CE4F54A001EF74E /* OKSGutteredCodeView.swift */,
 				0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */,
+				D0656BD61CFA6E2E00734FF7 /* CodeViewDelegate.swift */,
 			);
 			path = OKSGutteredCodeView;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				D0BE2BAE1CE8FF6B0043EA79 /* README.md in Sources */,
 				0AEC580E1CE4F54A001EF74E /* OKSGutteredCodeView.swift in Sources */,
+				D0656BD71CFA6E2E00734FF7 /* CodeViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

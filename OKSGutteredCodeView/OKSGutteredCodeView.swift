@@ -18,8 +18,6 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     
     private var numberOfLines = 1
     private var gutterSubViews: [UILabel] = []
-    private var visableKeyboard = false
-    private var keyboardDementions: CGRect?
     func xibSetUp() {
         view = loadFromXib()
         view.frame = bounds
@@ -87,49 +85,18 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         }
         self.numberOfLines = self.countNumberOfLines()
         self.addNumberToGutter()
-        if self.visableKeyboard {
-            
-            let userInfo: [NSObject : AnyObject] = [UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: self.keyboardDementions!)]
-            let notification: NSNotification = NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo: userInfo)
-            NSNotificationCenter.defaultCenter().postNotification(notification)
-           
-        }
-        if textView.text.characters.last == "\n" {
-            let curserPosition = self.textView.caretRectForPosition(self.textView.selectedTextRange!.start).origin
-            let newViewRect = CGRectMake(0, curserPosition.y, self.textView.bounds.width, self.textView.bounds.height)
-            self.textView.scrollRectToVisible(newViewRect, animated: false)
-        }
         self.delegate?.textUpdated(self.textView.text)
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        // figures out the frame of the keyboard when it appears
-        self.visableKeyboard = true
-        
-        let info  = notification.userInfo!
-        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-        
-        let rawFrame = value.CGRectValue
-        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
-        self.keyboardDementions = keyboardFrame
-        // adds content size if needed
-        
-        if self.heightOfLine(self.textView.text) > self.textView.bounds.height - keyboardFrame.height {
-            self.textView.contentSize = CGSizeMake(self.textView.bounds.width, self.textView.contentSize.height + keyboardFrame.height)
-            self.gutterView.contentSize = CGSizeMake(self.gutterView.bounds.width, self.gutterView.contentSize.height + keyboardFrame.height)
-        }
+        self.delegate?.keyboardWillAppear(notification)
     }
     
     func keepCurserVisable() {
-    
+        self.delegate?.keyboardWillHide()
     }
     func keyboardWillHide() {
-        if self.visableKeyboard {
-            self.visableKeyboard = false
-            self.textView.contentSize = CGSizeMake(self.textView.bounds.width, self.textView.contentSize.height - self.keyboardDementions!.height)
-            self.gutterView.contentSize = CGSizeMake(self.gutterView.bounds.width, self.gutterView.contentSize.height - self.keyboardDementions!.height)
-            self.keyboardDementions = nil
-        }
+    
     }
     
     //MARK: UIScrollView Delegate Mathods
@@ -179,20 +146,11 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         return lineHeight
     }
     
-    func updatekeyboardSize() {
-        self.textView.resignFirstResponder()
-        self.textView.becomeFirstResponder()
-    }
     
     //MARK: KVO methods
     
     override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath != nil && keyPath == "bounds" && (object?.isEqual(self))! {
-            if self.visableKeyboard {
-                self.textView.contentSize = CGSizeMake(0, 0)
-                self.gutterView.contentSize = CGSizeMake(0, 0)
-            }
-            performSelector(#selector(updatekeyboardSize), withObject: self.textView, afterDelay: 0.5)
             performSelector(#selector(textViewDidChange), withObject: self.textView, afterDelay: 0.51)
         }
     }

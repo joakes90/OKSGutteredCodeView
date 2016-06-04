@@ -8,4 +8,8 @@
 
 public protocol CodeViewDelegate: class {
     func textUpdated(text: String)
+    
+    func keyboardWillAppear(notification: NSNotification)
+    
+    func keyboardWillHide()
 }

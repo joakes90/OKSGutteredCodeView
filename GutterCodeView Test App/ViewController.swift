@@ -39,6 +39,14 @@ class ViewController: UIViewController, CodeViewDelegate {
         print(text)
     }
     
+    func keyboardWillAppear(notification: NSNotification) {
+        print("it appeared")
+    }
+    
+    func keyboardWillHide() {
+        print("it hid")
+    }
+    
     func test() {
         self.gutterView.insertTextAtCurser("Wubalubadubdub")
     }

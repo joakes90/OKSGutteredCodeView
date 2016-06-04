@@ -11,5 +11,5 @@ public protocol CodeViewDelegate: class {
     
     func keyboardWillAppear(notification: NSNotification)
     
-    func keyboardWillHide()
+    func keyboardWillHide(notification: NSNotification)
 }

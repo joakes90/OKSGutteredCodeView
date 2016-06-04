@@ -92,11 +92,8 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.delegate?.keyboardWillAppear(notification)
     }
     
-    func keepCurserVisable() {
-        self.delegate?.keyboardWillHide()
-    }
-    func keyboardWillHide() {
-    
+    func keyboardWillHide(notification: NSNotification) {
+        self.delegate?.keyboardWillHide(notification)
     }
     
     //MARK: UIScrollView Delegate Mathods

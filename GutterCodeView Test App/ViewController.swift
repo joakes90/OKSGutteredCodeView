@@ -43,8 +43,8 @@ class ViewController: UIViewController, CodeViewDelegate {
         print("it appeared")
     }
     
-    func keyboardWillHide() {
-        print("it hid")
+    func keyboardWillHide(notification: NSNotification) {
+        print("It hid")
     }
     
     func test() {

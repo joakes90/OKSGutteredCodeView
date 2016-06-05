@@ -68,6 +68,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.text = text
     }
     
+    @objc public func getText() -> String {
+        return self.textView.text!
+    }
+    
     @objc public func addTextViewAccessoryView(toolbar: UIToolbar) {
         toolbar.sizeToFit()
         self.textView.inputAccessoryView = toolbar

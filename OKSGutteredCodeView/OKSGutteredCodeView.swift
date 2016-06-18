@@ -85,6 +85,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.replaceRange(self.textView.selectedTextRange!, withText: text)
     }
     
+    @objc public func setAttributedText(text: NSAttributedString) {
+        self.textView.attributedText = text
+    }
+    
     //MARK: UITextView Delegate Methods
     
     @objc public func textViewDidChange(textView: UITextView) {

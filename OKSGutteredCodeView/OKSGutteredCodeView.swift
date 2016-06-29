@@ -150,7 +150,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     
     func heightOfLine(line: String) -> CGFloat {
         let font: UIFont = self.textView.font!
-        let textViewWidth: CGFloat = self.textView.bounds.width
+        let textViewWidth: CGFloat = self.textView.frame.width
         let lineHeight = line.boundingRectWithSize(CGSizeMake(textViewWidth, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).height
         return lineHeight
     }

@@ -15,6 +15,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     public weak var delegate: CodeViewDelegate?
     var view: UIView!
     var font: UIFont?
+    var fontColor: UIColor?
     
     private var numberOfLines = 1
     private var gutterSubViews: [UILabel] = []
@@ -89,6 +90,11 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.attributedText = text
     }
     
+    @objc public func addFontColor(color: UIColor) {
+        self.fontColor = color
+        self.textView.textColor = color
+    }
+    
     //MARK: UITextView Delegate Methods
     
     @objc public func textViewDidChange(textView: UITextView) {
@@ -134,6 +140,7 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
             label.font = self.font != nil ? self.font : UIFont(name: "Courier New", size: 17.0)
             label.textAlignment = .Right
             label.text = "\(counter)"
+            label.textColor = self.fontColor == nil ? UIColor.blackColor() : self.fontColor!
             self.gutterView.addSubview(label)
             self.gutterSubViews.append(label)
             counter += 1

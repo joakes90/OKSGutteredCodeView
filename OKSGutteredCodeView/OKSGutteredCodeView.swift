@@ -95,6 +95,10 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
         self.textView.textColor = color
     }
     
+    @objc public func setTextViewBackgroundColor(color: UIColor) {
+        self.textView.backgroundColor = color
+    }
+    
     //MARK: UITextView Delegate Methods
     
     @objc public func textViewDidChange(textView: UITextView) {

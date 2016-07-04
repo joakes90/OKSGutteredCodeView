@@ -87,7 +87,9 @@ public class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelega
     }
     
     @objc public func setAttributedText(text: NSAttributedString) {
+        let curserPosition: NSRange = self.textView.selectedRange
         self.textView.attributedText = text
+        self.textView.selectedRange = curserPosition
     }
     
     @objc public func addFontColor(color: UIColor) {

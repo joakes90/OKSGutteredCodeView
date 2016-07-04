@@ -27,7 +27,6 @@ class ViewController: UIViewController, CodeViewDelegate {
         
         self.gutterView.addTextViewAccessoryView(testToolbar)
         
-        performSelector(#selector(test), withObject: nil, afterDelay: 5.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,9 +44,5 @@ class ViewController: UIViewController, CodeViewDelegate {
     
     func keyboardWillHide(notification: NSNotification) {
         print("It hid")
-    }
-    
-    func test() {
-        self.gutterView.insertTextAtCurser("Wubalubadubdub")
     }
 }

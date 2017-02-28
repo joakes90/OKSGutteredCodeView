@@ -15,14 +15,14 @@ class ViewController: UIViewController, CodeViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.gutterView.setGutterBackgroundColor(UIColor.blueColor())
+        self.gutterView.setGutterBackgroundColor(#colorLiteral(red: 1, green: 0.6120633388, blue: 0.02601929553, alpha: 1))
         self.gutterView.setfont(UIFont(name: "Hack", size: 17.0)!)
         self.gutterView.setText("Hello \n \n \n World")
         self.gutterView.delegate = self
         
-        let testToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 100, 70))
-        let flexSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let testButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Bookmarks, target: nil, action: nil)
+        let testToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
+        let flexSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let testButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: nil, action: nil)
        testToolbar.items = [flexSpace, testButton]
         
         self.gutterView.addTextViewAccessoryView(testToolbar)
@@ -33,16 +33,18 @@ class ViewController: UIViewController, CodeViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 //MARK: CodeViewDelegate Methods
-    func textUpdated(text: String) {
+    
+    func textUpdated(_ text: String) {
         print(text)
     }
     
-    func keyboardWillAppear(notification: NSNotification) {
-        print("it appeared")
+    func keyboardWillAppear(_ notification: Notification) {
+        print("It appeared")
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         print("It hid")
     }
 }

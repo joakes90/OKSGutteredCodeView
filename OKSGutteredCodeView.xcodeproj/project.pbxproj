@@ -106,10 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				0AEC58031CE4F0E7001EF74E /* OKSGutteredCodeView.h */,
-				0AEC58051CE4F0E7001EF74E /* Info.plist */,
 				0AEC580D1CE4F54A001EF74E /* OKSGutteredCodeView.swift */,
-				0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */,
 				D0656BD61CFA6E2E00734FF7 /* CodeViewDelegate.swift */,
+				0AEC580F1CE4F568001EF74E /* OKSGutteredCodeView.xib */,
+				0AEC58051CE4F0E7001EF74E /* Info.plist */,
 			);
 			path = OKSGutteredCodeView;
 			sourceTree = "<group>";
@@ -191,9 +191,11 @@
 				TargetAttributes = {
 					0AEC57FF1CE4F0E7001EF74E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 					};
 					0AEC58141CE4F73F001EF74E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -394,6 +396,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -411,6 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.oklasoft.OKSGutteredCodeView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -423,6 +427,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -435,6 +440,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jbhunt.GutterCodeView-Test-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

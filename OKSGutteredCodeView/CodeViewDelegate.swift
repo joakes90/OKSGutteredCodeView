@@ -7,9 +7,10 @@
 //
 
 public protocol CodeViewDelegate: class {
-    func textUpdated(text: String)
     
-    func keyboardWillAppear(notification: NSNotification)
+    func textUpdated(_ text: String)
     
-    func keyboardWillHide(notification: NSNotification)
+    func keyboardWillAppear(_ notification: Notification)
+    
+    func keyboardWillHide(_ notification: Notification)
 }

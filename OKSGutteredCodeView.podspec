@@ -4,11 +4,11 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.ios.deployment_target = '9.3'
   s.name = "OKSGutteredCodeView"
-  s.summary = "A UIView subclass that contains a textview and a gutter for line numbers"
+  s.summary = "A UIView subclass that contains a textview with a gutter for line numbers"
   s.requires_arc = true
  
   # 2
-  s.version = "0.2"
+  s.version = "0.3"
  
   # 3
   s.license = { :type => "MIT", :file => "LICENSE" }

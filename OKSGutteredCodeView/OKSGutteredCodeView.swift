@@ -13,7 +13,7 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     
-    var delegate: CodeViewDelegate?
+    open var delegate: CodeViewDelegate?
     
     //Properties set by users
     var viewFont: UIFont?
@@ -31,7 +31,8 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     }
     
     func loadFromXib() -> UIView {
-        let xib: UINib = UINib(nibName: "OKSGutteredCodeView", bundle: Bundle.main)
+        let bundle: Bundle = Bundle(for: type(of: self))
+        let xib: UINib = UINib(nibName: "OKSGutteredCodeView", bundle: bundle)
         let view: UIView = xib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view

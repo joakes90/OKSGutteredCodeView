@@ -13,12 +13,10 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     @IBOutlet weak var gutterView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     
-    open weak var delegate: CodeViewDelegate?
-    
-    var view: UIView!
+    var delegate: CodeViewDelegate?
     
     //Properties set by users
-    var font: UIFont?
+    var viewFont: UIFont?
     var fontColor: UIColor?
     
     // initalization
@@ -26,153 +24,153 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     fileprivate var gutterSubViews: [UILabel] = []
     
     func xibSetUp() {
-        view = loadFromXib()
-        view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        addSubview(view)
+        let xibView: UIView = loadFromXib()
+        xibView.frame = bounds
+        xibView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        addSubview(xibView)
     }
     
     func loadFromXib() -> UIView {
-        let bundle: Bundle = Bundle(for: type(of: self))
-        let xib: UINib = UINib(nibName: "OKSGutteredCodeView", bundle: bundle)
+        let xib: UINib = UINib(nibName: "OKSGutteredCodeView", bundle: Bundle.main)
         let view: UIView = xib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }
     
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetUp()
-        self.addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
+        addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        self.textViewDidChange(self.textView)
+        textViewDidChange(textView)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetUp()
-        self.addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
+        addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        self.textViewDidChange(self.textView)
+        textViewDidChange(textView)
     }
     
     //MARK: custimization methods
     
     @objc open func setGutterBackgroundColor(_ color: UIColor) {
-        self.gutterView.backgroundColor = color
+        gutterView.backgroundColor = color
     }
     
     @objc open func setfont(_ font: UIFont) {
-        self.font = font
-        self.textView.font = font
+        viewFont = font
+        textView.font = font
     }
     
     @objc open func setText(_ text: String) {
-        self.textView.text = text
+        textView.text = text
     }
     
     @objc open func getText() -> String {
-        return self.textView.text!
+        return textView.text
     }
     
     @objc open func getFont() -> UIFont? {
-        return self.font
+        return viewFont
     }
     
     @objc open func addTextViewAccessoryView(_ toolbar: UIToolbar) {
         toolbar.sizeToFit()
-        self.textView.inputAccessoryView = toolbar
+        textView.inputAccessoryView = toolbar
     }
     
     @objc open func insertTextAtCurser(_ text: String) {
-        self.textView.replace(self.textView.selectedTextRange!, withText: text)
+        textView.replace(textView.selectedTextRange ?? UITextRange() , withText: text)
     }
     
     @objc open func appendText(_ text: String) {
-        self.textView.text = "\(self.textView.text)\(text)"
+        textView.text = "\(textView.text)\(text)"
     }
     
     @objc open func setAttributedText(_ text: NSAttributedString) {
-        let curserPosition: NSRange = self.textView.selectedRange
-        self.textView.attributedText = text
-        self.textView.selectedRange = curserPosition
+        let curserPosition: NSRange = textView.selectedRange
+        textView.attributedText = text
+        textView.selectedRange = curserPosition
     }
     
     @objc open func addFontColor(_ color: UIColor) {
-        self.fontColor = color
-        self.textView.textColor = color
+        fontColor = color
+        textView.textColor = color
     }
     
     @objc open func setTextViewBackgroundColor(_ color: UIColor) {
-        self.textView.backgroundColor = color
+        textView.backgroundColor = color
     }
     
     //MARK: UITextView Delegate Methods
     
     @objc open func textViewDidChange(_ textView: UITextView) {
-        for label in self.gutterSubViews {
+        for label in gutterSubViews {
             label.removeFromSuperview()
         }
-        self.numberOfLines = self.countNumberOfLines()
-        self.addNumberToGutter()
-        self.delegate?.textUpdated(self.textView.text)
+        numberOfLines = countNumberOfLines()
+        addNumberToGutter()
+        delegate?.textUpdated(textView.text)
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        self.delegate?.keyboardWillAppear(notification)
+        delegate?.keyboardWillAppear(notification)
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        self.delegate?.keyboardWillHide(notification)
+        delegate?.keyboardWillHide(notification)
     }
     
     //MARK: UIScrollView Delegate Mathods
     
     @objc open func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let yOffSet = self.textView.contentOffset.y
-        self.gutterView.scrollRectToVisible(CGRect(x: 0, y: yOffSet, width: self.gutterView.frame.width, height: self.gutterView.frame.height), animated: false)
+        let yOffSet = textView.contentOffset.y
+        gutterView.scrollRectToVisible(CGRect(x: 0, y: yOffSet, width: gutterView.frame.width, height: gutterView.frame.height), animated: false)
     }
     
     //MARK: sorting out number and location of lines
     
     func countNumberOfLines() -> Int {
-        let text = self.textView.text
+        let text = textView.text
         let seperatedLines = text?.components(separatedBy: "\n")
-        return seperatedLines!.count - 1
+        let newLines = seperatedLines?.count ?? 0
+        return newLines > 0 ? newLines - 1 : newLines
     }
     
     func addNumberToGutter() {
-        let curserPosition = self.textView.caretRect(for: self.textView.selectedTextRange!.start).origin
-        let text = self.textView.text
-        let seperatedLines = text?.components(separatedBy: "\n")
+        let curserPosition = textView.caretRect(for: textView.selectedTextRange?.start ?? UITextRange().start).origin
+        let text: String = textView.text
+        let seperatedLines: [String] = text.components(separatedBy: "\n")
         var numberInsertionPoint: CGFloat = 8
-        self.gutterView.contentSize = self.gutterView.frame.size
+        gutterView.contentSize = gutterView.frame.size
         var counter: Int = 1
-        for line in seperatedLines! {
-            let label: UILabel = UILabel(frame: CGRect(x: 0, y: numberInsertionPoint, width: 35, height: self.textView.font!.lineHeight))
-            label.font = self.font != nil ? self.font : UIFont(name: "Courier New", size: 17.0)
+        for line in seperatedLines {
+            let label: UILabel = UILabel(frame: CGRect(x: 0, y: numberInsertionPoint, width: 35, height: (textView.font ?? UIFont.preferredFont(forTextStyle: .body)).lineHeight))
+            label.font = viewFont ?? UIFont(name: "Courier New", size: 17.0)
             label.textAlignment = .right
             label.text = "\(counter)"
-            label.textColor = self.fontColor == nil ? UIColor.black : self.fontColor!
-            self.gutterView.addSubview(label)
-            self.gutterSubViews.append(label)
+            label.textColor = fontColor ?? UIColor.black
+            gutterView.addSubview(label)
+            gutterSubViews.append(label)
             counter += 1
-            numberInsertionPoint = numberInsertionPoint + heightOfLine(line)
-            if numberInsertionPoint > self.gutterView.contentSize.height {
-                let contentHeight = self.gutterView.contentSize.height
-                let contentWidth = self.gutterView.contentSize.width
-                self.gutterView.contentSize = CGSize(width: contentWidth, height: contentHeight + heightOfLine(line))
+            numberInsertionPoint += heightOfLine(line)
+            if numberInsertionPoint > gutterView.contentSize.height {
+                let contentHeight = gutterView.contentSize.height
+                let contentWidth = gutterView.contentSize.width
+                gutterView.contentSize = CGSize(width: contentWidth, height: contentHeight + heightOfLine(line))
             }
         }
-        self.textView.scrollRectToVisible(CGRect(x: 0, y: curserPosition.y, width: self.textView.bounds.width, height: self.textView.bounds.height), animated: false)
-        self.gutterView.scrollRectToVisible(CGRect(x: 0, y: curserPosition.y, width: self.textView.bounds.width, height: self.textView.bounds.height), animated: false)
+        textView.scrollRectToVisible(CGRect(x: 0, y: curserPosition.y, width: textView.bounds.width, height: textView.bounds.height), animated: false)
+        gutterView.scrollRectToVisible(CGRect(x: 0, y: curserPosition.y, width: textView.bounds.width, height: textView.bounds.height), animated: false)
     }
     
     func heightOfLine(_ line: String) -> CGFloat {
-        let font: UIFont = self.textView.font!
-        let textViewWidth: CGFloat = self.textView.frame.width
+        let font: UIFont = textView.font ?? UIFont.preferredFont(forTextStyle: .body)
+        let textViewWidth: CGFloat = textView.bounds.width
         let lineHeight = line.boundingRect(with: CGSize(width: textViewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).height
         return lineHeight
     }
@@ -180,9 +178,11 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     
     //MARK: KVO methods
     
+    // recalcualtes and redraws everything relavent to where text is positioned on the screen when the bounds of the view chnges
+    // (rotation, splitview, priview window sliding over etc...)
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath != nil && keyPath == "bounds" && ((object as AnyObject).isEqual(self)) {
-            perform(#selector(textViewDidChange), with: self.textView, afterDelay: 0.51)
+            perform(#selector(textViewDidChange), with: textView, afterDelay: 0.51)
         }
     }
     

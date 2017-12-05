@@ -118,11 +118,11 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
         delegate?.textUpdated(textView.text)
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         delegate?.keyboardWillAppear(notification)
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         delegate?.keyboardWillHide(notification)
     }
     
@@ -172,7 +172,7 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     func heightOfLine(_ line: String) -> CGFloat {
         let font: UIFont = textView.font ?? UIFont.preferredFont(forTextStyle: .body)
         let textViewWidth: CGFloat = textView.bounds.width
-        let lineHeight = line.boundingRect(with: CGSize(width: textViewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).height
+        let lineHeight = line.boundingRect(with: CGSize(width: textViewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil).height
         return lineHeight
     }
     

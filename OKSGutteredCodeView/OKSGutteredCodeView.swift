@@ -26,7 +26,7 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     func xibSetUp() {
         let xibView: UIView = loadFromXib()
         xibView.frame = bounds
-        xibView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        xibView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         addSubview(xibView)
     }
     
@@ -42,8 +42,8 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
         super.init(frame: frame)
         xibSetUp()
         addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         textViewDidChange(textView)
     }
     
@@ -51,8 +51,8 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
         super.init(coder: aDecoder)
         xibSetUp()
         addObserver(self, forKeyPath: "bounds", options: .initial, context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         textViewDidChange(textView)
     }
     
@@ -89,7 +89,7 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     }
     
     @objc open func appendText(_ text: String) {
-        textView.text = "\(textView.text)\(text)"
+        textView.text = "\(textView.text ?? "")\(text)"
     }
     
     @objc open func setAttributedText(_ text: NSAttributedString) {
@@ -172,7 +172,7 @@ open class OKSGutteredCodeView: UIView, UITextViewDelegate, UIScrollViewDelegate
     func heightOfLine(_ line: String) -> CGFloat {
         let font: UIFont = textView.font ?? UIFont.preferredFont(forTextStyle: .body)
         let textViewWidth: CGFloat = textView.bounds.width
-        let lineHeight = line.boundingRect(with: CGSize(width: textViewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil).height
+        let lineHeight = line.boundingRect(with: CGSize(width: textViewWidth, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : font], context: nil).height
         return lineHeight
     }
     

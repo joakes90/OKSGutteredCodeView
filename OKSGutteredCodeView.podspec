@@ -6,6 +6,7 @@ Pod::Spec.new do |s|
   s.name = "OKSGutteredCodeView"
   s.summary = "A UIView subclass that contains a textview with a gutter for line numbers"
   s.requires_arc = true
+  s.swift_versions = ['5.0']
  
   # 2
   s.version = "0.6"
@@ -21,14 +22,14 @@ Pod::Spec.new do |s|
  
  
   # 5 - Replace this URL with your own Github page's URL (from the address bar)
-  s.homepage = "https://github.com/joakes1990/OKSGutteredCodeView"
+  s.homepage = "https://github.com/joakes90/OKSGutteredCodeView"
  
   # For example,
   # s.homepage = "https://github.com/JRG-Developer/RWPickFlavor"
  
  
   # 6 - Replace this URL with your own Git URL from "Quick Setup"
-  s.source = { :git => "https://github.com/joakes1990/OKSGutteredCodeView.git", :tag => "#{s.version}"}
+  s.source = { :git => "https://github.com/joakes90/OKSGutteredCodeView.git", :tag => "#{s.version}"}
  
   # For example,
   # s.source = { :git => "https://github.com/JRG-Developer/RWPickFlavor.git", :tag => "#{s.version}"}

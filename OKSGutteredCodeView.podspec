@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
  
   # 4 - Replace with your name and e-mail address
-  s.author = { "Justin Oakes" => "joakes90@icloud.com" }
+  s.author = { "Justin Oakes" => "justin.t.oakes@gmail.com" }
  
   # For example,
   # s.author = { "Joshua Greene" => "jrg.developer@gmail.com" }

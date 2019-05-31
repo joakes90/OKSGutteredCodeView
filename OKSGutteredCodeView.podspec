@@ -8,13 +8,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
  
   # 2
-  s.version = "0.5"
+  s.version = "0.6"
  
   # 3
   s.license = { :type => "MIT", :file => "LICENSE" }
  
   # 4 - Replace with your name and e-mail address
-  s.author = { "Oklasoft LLC" => "admin@oklasoftware.com" }
+  s.author = { "Justin Oakes" => "joakes90@icloud.com" }
  
   # For example,
   # s.author = { "Joshua Greene" => "jrg.developer@gmail.com" }
